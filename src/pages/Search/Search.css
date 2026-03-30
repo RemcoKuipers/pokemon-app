@@ -1,0 +1,30 @@
+.search-page {
+    padding: 40px;
+    color: white;
+}
+
+.search-page input {
+    width: 300px;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: none;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card-item {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card-item img {
+    width: 180px;
+    border-radius: 10px;
+}
