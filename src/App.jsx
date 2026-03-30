@@ -6,10 +6,13 @@ import CardDetail from "./pages/CardDetail/CardDetail";
 import Collection from "./pages/Collection/Collection";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
     return (
         <div className="layout">
+            <Navbar />
+
             <main className="content">
                 <Routes>
                     <Route path="/" element={<Home />} />
