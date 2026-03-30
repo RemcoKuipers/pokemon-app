@@ -1,0 +1,37 @@
+.card-detail-page {
+    padding: 40px;
+    color: white;
+}
+
+.card-detail-container {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.card-detail-container img {
+    width: 320px;
+    border-radius: 16px;
+}
+
+.card-info {
+    max-width: 400px;
+}
+
+.card-info h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.card-info p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}

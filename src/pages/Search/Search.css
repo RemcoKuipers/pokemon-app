@@ -22,9 +22,15 @@
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.2);
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .card-item img {
     width: 180px;
     border-radius: 10px;
+}
+
+.card-item:hover {
+    transform: scale(1.03);
 }
