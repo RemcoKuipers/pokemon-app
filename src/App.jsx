@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import CardDetail from "./pages/CardDetail/CardDetail";
@@ -18,7 +18,14 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/card/:id" element={<CardDetail />} />
-                    <Route path="/collection" element={<Collection />} />
+                    <Route
+                        path="/collection"
+                        element={
+                            <ProtectedRoute>
+                                <Collection />
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Routes>
