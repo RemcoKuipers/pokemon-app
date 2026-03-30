@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "./Search.css";
 import tcgdexApi from "../../services/tcgdexApi";
+import {useNavigate} from "react-router-dom";
 
 function Search() {
     const [cards, setCards] = useState([]);
@@ -8,6 +9,8 @@ function Search() {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchCards();
@@ -50,7 +53,11 @@ function Search() {
             ) : (
                 <div className="card-grid">
                     {filteredCards.map((card) => (
-                        <div key={card.id} className="card-item">
+                        <div
+                            key={card.id}
+                            className="card-item"
+                            onClick={() => navigate(`/card/${card.id}`)}
+                        >
                             <img
                                 src={`${card.image}/high.png`}
                                 alt={card.name}
