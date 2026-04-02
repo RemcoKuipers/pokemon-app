@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import "./CardDetail.css";
 import tcgdexApi from "../../services/tcgdexApi";
+import {useCollection} from "../../context/CollectionContext.jsx";
 
 function CardDetail() {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
-
+    const {addToCollection} = useCollection();
     const [card, setCard] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -57,6 +58,12 @@ function CardDetail() {
                                 onClick={() => navigate("/search")}
                             >
                                 ← Back to search
+                            </button>
+                            <button
+                            className="save-button"
+                            onClick={() => addToCollection(card)}
+                            >
+                                + Add to your collection
                             </button>
                         </div>
                     </div>

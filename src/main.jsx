@@ -1,15 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from "./context/AuthContext";
+import {BrowserRouter} from 'react-router-dom'
+import {AuthProvider} from "./context/AuthContext";
 import './index.css'
+import {CollectionProvider} from "./context/CollectionContext";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>
             <AuthProvider>
-                <App />
+                <CollectionProvider>
+                    <App/>
+                </CollectionProvider>
             </AuthProvider>
         </BrowserRouter>
     </React.StrictMode>,
