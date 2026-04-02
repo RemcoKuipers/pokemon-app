@@ -35,3 +35,12 @@
     border-radius: 12px;
     cursor: pointer;
 }
+
+.save-button {
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}

@@ -1,0 +1,22 @@
+.collection-page {
+    padding: 40px;
+    color: white;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.collection-card {
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.collection-card img {
+    width: 180px;
+    border-radius: 10px;
+}
