@@ -3,34 +3,45 @@
     color: white;
 }
 
+.search-page h1 {
+    margin-bottom: 20px;
+}
+
 .search-page input {
-    width: 300px;
-    padding: 12px;
-    margin: 20px 0;
-    border-radius: 12px;
+    width: 320px;
+    padding: 14px;
+    margin-bottom: 30px;
+    border-radius: 14px;
     border: none;
+    outline: none;
+    font-size: 16px;
 }
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 90px;
 }
 
 .card-item {
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.2);
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.18);
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: 0.2s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-6px);
 }
 
 .card-item img {
     width: 180px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
 }
 
-.card-item:hover {
-    transform: scale(1.03);
+.card-item p {
+    margin-top: 12px;
 }

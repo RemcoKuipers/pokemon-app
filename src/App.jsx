@@ -7,7 +7,7 @@ import Collection from "./pages/Collection/Collection";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Navbar from "./components/Navbar/Navbar";
-
+import "./App.css"
 function App() {
     return (
         <div className="layout">

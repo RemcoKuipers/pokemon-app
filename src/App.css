@@ -1,13 +1,21 @@
 body {
     margin: 0;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #0d5c75, #63d0d4);
+    background: linear-gradient(
+            to bottom,
+            #07506a 0%,
+            #1fa5c1 55%,
+            #7adbd8 100%
+    );
 }
 
 .layout {
     display: flex;
+    min-height: 100vh;
 }
 
 .content {
     flex: 1;
+    padding: 60px 80px;
 }
