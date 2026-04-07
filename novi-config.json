@@ -1,0 +1,31 @@
+{
+  "collections": [
+    {
+      "name": "savedCards",
+      "fields": [
+        {
+          "name": "cardId",
+          "type": "text"
+        },
+        {
+          "name": "cardName",
+          "type": "text"
+        },
+        {
+          "name": "image",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "email": "test@pokemonapp.nl",
+      "password": "123456",
+      "role": "user"
+    }
+  ],
+  "data": {
+    "savedCards": []
+  }
+}
