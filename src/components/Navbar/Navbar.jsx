@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import Pokeball from "../../assets/Pokeball.png"
 
 function Navbar() {
     return (
         <aside className="sidebar">
             <div className="logo">
-                <Link to="/">Pokémon App</Link>
+                <Link to="/">
+                    <img src={Pokeball} alt="Home" className="pokeball-logo" />
+                </Link>
             </div>
 
             <nav className="nav-links">
