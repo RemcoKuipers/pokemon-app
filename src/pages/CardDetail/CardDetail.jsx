@@ -35,39 +35,43 @@ function CardDetail() {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <>
-                    <div className="card-detail-container">
+                <div className="card-detail-container">
+                    <div className="card-image-wrapper">
                         <img
                             src={`${card.image}/high.png`}
                             alt={card.name}
+                            className="detail-card-image"
                             onError={(e) => {
                                 e.target.src = `${card.image}/low.png`;
                             }}
                         />
+                    </div>
 
-                        <div className="card-info">
-                            <h1>{card.name}</h1>
+                    <div className="card-info">
+                        <h1>{card.name}</h1>
 
-                            <p><strong>HP:</strong> {card.hp}</p>
-                            <p><strong>Type:</strong> {card.types?.join(", ")}</p>
-                            <p><strong>Rarity:</strong> {card.rarity}</p>
-                            <p><strong>Set:</strong> {card.set?.name}</p>
+                        <p><strong>HP:</strong> {card.hp}</p>
+                        <p><strong>Type:</strong> {card.types?.join(", ")}</p>
+                        <p><strong>Rarity:</strong> {card.rarity}</p>
+                        <p><strong>Set:</strong> {card.set?.name}</p>
 
+                        <div className="detail-buttons">
                             <button
                                 className="back-button"
                                 onClick={() => navigate("/search")}
                             >
-                                ← Back to search
+                                Back
                             </button>
+
                             <button
-                            className="save-button"
-                            onClick={() => addToCollection(card)}
+                                className="save-button"
+                                onClick={() => addToCollection(card)}
                             >
-                                + Add to your collection
+                                Add
                             </button>
                         </div>
                     </div>
-                </>
+                </div>
             )}
         </section>
     );

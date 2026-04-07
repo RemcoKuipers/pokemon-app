@@ -1,21 +1,28 @@
 .card-detail-page {
-    padding: 40px;
     color: white;
+    width: 100%;
 }
 
 .card-detail-container {
     display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    align-items: center;
+    gap: 80px;
 }
 
-.card-detail-container img {
-    width: 320px;
-    border-radius: 16px;
+.card-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-card-image {
+    width: 260px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
 .card-info {
-    max-width: 400px;
+    max-width: 420px;
 }
 
 .card-info h1 {
@@ -24,23 +31,30 @@
 }
 
 .card-info p {
-    margin-bottom: 10px;
     font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.back-button {
-    margin-top: 20px;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
+.detail-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
 }
 
+.back-button,
 .save-button {
-    margin-top: 15px;
-    margin-left: 10px;
-    padding: 12px 18px;
+    width: 140px;
+    height: 46px;
     border: none;
-    border-radius: 12px;
+    border-radius: 999px;
+    background: rgba(0, 60, 80, 0.5);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
     cursor: pointer;
+}
+
+.back-button:hover,
+.save-button:hover {
+    background: rgba(0, 60, 80, 0.65);
 }
