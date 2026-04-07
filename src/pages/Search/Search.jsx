@@ -1,15 +1,18 @@
 import {useEffect, useState} from "react";
 import "./Search.css";
 import tcgdexApi from "../../services/tcgdexApi";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function Search() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [searchTerm, setSearchTerm] = useState(
+        location.state?.searchTerm || "");
+    const [currentPage, setCurrentPage] = useState(
+        location.state?.currentPage || 1);
     const [cards, setCards] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
-    const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 6;
 
     useEffect(() => {
@@ -75,7 +78,14 @@ function Search() {
                             <div
                                 key={card.id}
                                 className="card-item"
-                                onClick={() => navigate(`/card/${card.id}`)}
+                                onClick={() =>
+                                    navigate(`/card/${card.id}`, {
+                                        state: {
+                                            currentPage,
+                                            searchTerm,
+                                        },
+                                    })
+                                }
                             >
                                 <img
                                     src={`${card.image}/high.png`}
