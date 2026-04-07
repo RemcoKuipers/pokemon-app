@@ -37,38 +37,45 @@ function Search() {
 
     return (
         <section className="search-page">
-            <h1>Search Pokémon Cards</h1>
-
-            <input
-                type="text"
-                placeholder="Search card..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <div className="search-header">
+                <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
 
             {loading ? (
                 <p>Loading cards...</p>
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <div className="card-grid">
-                    {filteredCards.map((card) => (
-                        <div
-                            key={card.id}
-                            className="card-item"
-                            onClick={() => navigate(`/card/${card.id}`)}
-                        >
-                            <img
-                                src={`${card.image}/high.png`}
-                                alt={card.name}
-                                onError={(e) => {
-                                    e.target.src = `${card.image}/low.png`;
-                                }}
-                            />
-                            <p>{card.name}</p>
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <div className="card-grid">
+                        {filteredCards.slice(0, 6).map((card) => (
+                            <div
+                                key={card.id}
+                                className="card-item"
+                                onClick={() => navigate(`/card/${card.id}`)}
+                            >
+                                <img
+                                    src={`${card.image}/high.png`}
+                                    alt={card.name}
+                                    onError={(e) => {
+                                        e.target.src = `${card.image}/low.png`;
+                                    }}
+                                />
+                                <p>{card.name}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="pagination">
+                        <button>Previous</button>
+                        <button>Next</button>
+                    </div>
+                </>
             )}
         </section>
     );
