@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import "./CardDetail.css";
 import tcgdexApi from "../../services/tcgdexApi";
 import {useCollection} from "../../context/CollectionContext.jsx";
@@ -11,6 +11,7 @@ function CardDetail() {
     const [card, setCard] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         fetchCard();
@@ -58,7 +59,14 @@ function CardDetail() {
                         <div className="detail-buttons">
                             <button
                                 className="back-button"
-                                onClick={() => navigate("/search")}
+                                onClick={() =>
+                                    navigate("/search", {
+                                        state: {
+                                            currentPage: location.state?.currentPage,
+                                            searchTerm: location.state?.searchTerm,
+                                        },
+                                    })
+                                }
                             >
                                 Back
                             </button>
