@@ -45,3 +45,8 @@
 .card-item p {
     margin-top: 12px;
 }
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
