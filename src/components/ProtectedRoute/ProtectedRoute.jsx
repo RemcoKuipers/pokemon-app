@@ -4,9 +4,11 @@ import { useAuth } from "../../context/AuthContext";
 function ProtectedRoute({ children }) {
     const { isAuthenticated } = useAuth();
 
-    return isAuthenticated
-        ? children
-        : <Navigate to="/login" />;
+    if (!isAuthenticated) {
+        return <Navigate to="/login" replace />;
+    }
+
+    return children;
 }
 
 export default ProtectedRoute;
