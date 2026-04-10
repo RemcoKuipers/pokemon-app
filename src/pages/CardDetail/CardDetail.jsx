@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useAuth} from "../../context/AuthContext.jsx";
 import "./CardDetail.css";
 import tcgdexApi from "../../services/tcgdexApi";
 import {useCollection} from "../../context/CollectionContext.jsx";
+import {fetchCardPrice} from "../../api/cardPriceApi.js";
 
 function CardDetail() {
     const {id} = useParams();
@@ -12,7 +14,8 @@ function CardDetail() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const location = useLocation();
-
+    const {isAuthenticated} = useAuth();
+    const [cardPrice, setCardPrice] = useState(0);
     useEffect(() => {
         fetchCard();
     }, [id]);
@@ -28,6 +31,17 @@ function CardDetail() {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        async function loadPrice() {
+            if (!isAuthenticated || !card) return;
+
+            const price = await fetchCardPrice(card.id);
+            setCardPrice(price);
+        }
+
+        loadPrice();
+    }, [card, isAuthenticated]);
 
     return (
         <section className="card-detail-page">
@@ -55,7 +69,13 @@ function CardDetail() {
                         <p><strong>Type:</strong> {card.types?.join(", ")}</p>
                         <p><strong>Rarity:</strong> {card.rarity}</p>
                         <p><strong>Set:</strong> {card.set?.name}</p>
-
+                        {isAuthenticated && (
+                            <p className="detail-price">
+                                {cardPrice > 0
+                                    ? `Current market price: €${cardPrice.toFixed(2)}`
+                                    : "Price unavailable"}
+                            </p>
+                        )}
                         <div className="detail-buttons">
                             <button
                                 className="back-button"
