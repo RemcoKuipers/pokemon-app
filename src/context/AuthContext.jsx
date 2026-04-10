@@ -8,29 +8,39 @@ import noviApi from "../api/noviApi";
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-    const [isAuthenticated, setIsAuthenticated] =
-        useState(false);
+export function AuthProvider({children}) {
+    const [authState, setAuthState] =
+        useState({
+            user: null,
+            status: "pending",
+        });
 
     useEffect(() => {
-        const user =
+        const storedUser =
             localStorage.getItem("user");
 
-        if (user) {
-            setIsAuthenticated(true);
+        const token =
+            localStorage.getItem("token");
+
+        if (storedUser && token) {
+            setAuthState({
+                user: JSON.parse(storedUser),
+                status: "done",
+            });
+        } else {
+            setAuthState({
+                user: null,
+                status: "done",
+            });
         }
     }, []);
 
     async function login(email, password) {
         try {
-            console.log("LOGIN START");
-
             const response = await noviApi.post("/api/login", {
                 email,
                 password,
             });
-
-            console.log("LOGIN RESPONSE:", response.data);
 
             localStorage.setItem(
                 "token",
@@ -39,10 +49,13 @@ export function AuthProvider({ children }) {
 
             localStorage.setItem(
                 "user",
-                JSON.stringify({ email })
+                JSON.stringify({email})
             );
 
-            setIsAuthenticated(true);
+            setAuthState({
+                user: { email },
+                status: "done",
+            });
 
             return true;
         } catch (error) {
@@ -59,11 +72,6 @@ export function AuthProvider({ children }) {
                 roles: ["user"]
             });
 
-            console.log(
-                "REGISTER SUCCESS:",
-                response.data
-            );
-
             return true;
         } catch (error) {
             console.error("REGISTER ERROR:", error);
@@ -74,19 +82,29 @@ export function AuthProvider({ children }) {
 
     function logout() {
         localStorage.removeItem("user");
-        setIsAuthenticated(false);
+        localStorage.removeItem("token");
+
+        setAuthState({
+            user: null,
+            status: "done",
+        });
     }
 
     return (
         <AuthContext.Provider
             value={{
-                isAuthenticated,
+                user: authState.user,
+                isAuthenticated:
+                    !!authState.user,
                 login,
-                register,
                 logout,
             }}
         >
-            {children}
+            {authState.status === "pending" ? (
+                <p>Loading...</p>
+            ) : (
+                children
+            )}
         </AuthContext.Provider>
     );
 }
