@@ -97,6 +97,7 @@ export function AuthProvider({children}) {
                 isAuthenticated:
                     !!authState.user,
                 login,
+                register,
                 logout,
             }}
         >

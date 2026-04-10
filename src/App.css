@@ -3,10 +3,10 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     background: linear-gradient(
-            to bottom,
-            #07506a 0%,
-            #1fa5c1 55%,
-            #7adbd8 100%
+            to bottom right,
+            #7ec8ff 0%,
+            #4facfe 45%,
+            #1e90ff 100%
     );
 }
 
