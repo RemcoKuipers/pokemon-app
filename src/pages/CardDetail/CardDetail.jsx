@@ -16,6 +16,8 @@ function CardDetail() {
     const location = useLocation();
     const {isAuthenticated} = useAuth();
     const [cardPrice, setCardPrice] = useState(0);
+    const [addedMessage, setAddedMessage] = useState(false);
+
     useEffect(() => {
         fetchCard();
     }, [id]);
@@ -42,6 +44,16 @@ function CardDetail() {
 
         loadPrice();
     }, [card, isAuthenticated]);
+
+    function handleAddCard() {
+        addToCollection(card);
+
+        setAddedMessage(true);
+
+        setTimeout(() => {
+            setAddedMessage(false);
+        }, 2000);
+    }
 
     return (
         <section className="card-detail-page">
@@ -90,13 +102,20 @@ function CardDetail() {
                             >
                                 Back
                             </button>
+                            <div className="add-button-wrapper">
+                                <button
+                                    className="save-button"
+                                    onClick={handleAddCard}
+                                >
+                                    Add to Collection
+                                </button>
 
-                            <button
-                                className="save-button"
-                                onClick={() => addToCollection(card)}
-                            >
-                                Add
-                            </button>
+                                {addedMessage && (
+                                    <p className="added-message">
+                                        Card added to collection
+                                    </p>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
