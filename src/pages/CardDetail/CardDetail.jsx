@@ -5,6 +5,8 @@ import "./CardDetail.css";
 import tcgdexApi from "../../services/tcgdexApi";
 import {useCollection} from "../../context/CollectionContext.jsx";
 import {fetchCardPrice} from "../../api/cardPriceApi.js";
+import spinner from "../../components/Spinner/Spinner.jsx";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 function CardDetail() {
     const {id} = useParams();
@@ -58,7 +60,7 @@ function CardDetail() {
     return (
         <section className="card-detail-page">
             {loading ? (
-                <p>Loading card...</p>
+                <Spinner />
             ) : error ? (
                 <p>{error}</p>
             ) : (

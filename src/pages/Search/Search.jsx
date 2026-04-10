@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import "./Search.css";
 import tcgdexApi from "../../services/tcgdexApi";
 import {useLocation, useNavigate} from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 function Search() {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ function Search() {
             </div>
 
             {loading ? (
-                <p>Loading cards...</p>
+                <Spinner />
             ) : error ? (
                 <p>{error}</p>
             ) : (
