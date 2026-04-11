@@ -104,20 +104,28 @@ function CardDetail() {
                             >
                                 Back
                             </button>
-                            <div className="add-button-wrapper">
-                                <button
-                                    className="save-button"
-                                    onClick={handleAddCard}
-                                >
-                                    Add to Collection
-                                </button>
+                            {!isAuthenticated && (
+                                <p className="login-hint">
+                                    Log in to add cards to your collection
+                                </p>
+                            )}
 
-                                {addedMessage && (
-                                    <p className="added-message">
-                                        Card added to collection
-                                    </p>
-                                )}
-                            </div>
+                            {isAuthenticated && (
+                                <div className="add-button-wrapper">
+                                    <button
+                                        className="save-button"
+                                        onClick={handleAddCard}
+                                    >
+                                        Add to Collection
+                                    </button>
+
+                                    {addedMessage && (
+                                        <p className="added-message">
+                                            Card added to collection
+                                        </p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
