@@ -8,6 +8,10 @@ function Navbar() {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
+    function toggleMenu() {
+        setMenuOpen(false);
+    }
+
     return (
         <aside className="sidebar">
             <div className="logo">
@@ -30,11 +34,11 @@ function Navbar() {
                     menuOpen ? "open" : ""
                 }`}
             >
-                <Link to="/">Home</Link>
-                <Link to="/search">Search</Link>
-                <Link to="/collection">Collection</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+                <Link to="/" onClick={toggleMenu}>Home</Link>
+                <Link to="/search" onClick={toggleMenu}>Search</Link>
+                <Link to="/collection" onClick={toggleMenu}>Collection</Link>
+                <Link to="/login" onClick={toggleMenu}>Login</Link>
+                <Link to="/register" onClick={toggleMenu}>Register</Link>
             </nav>
         </aside>
     );
