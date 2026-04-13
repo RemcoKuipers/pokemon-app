@@ -1,33 +1,76 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
+import { useAuth } from "./AuthContext";
 
 const CollectionContext = createContext();
 
-export function CollectionProvider({ children }) {
-    const [collection, setCollection] = useState(() => {
-        const savedCards = localStorage.getItem("pokemonCollection");
-        return savedCards ? JSON.parse(savedCards) : [];
-    });
+export function CollectionProvider({
+                                       children,
+                                   }) {
+    const { user, status } = useAuth();
+
+    const storageKey = user
+        ? `pokemonCollection_${user.email}`
+        : "pokemonCollection_guest";
+
+    const [collection, setCollection] =
+        useState([]);
+
+    const [isLoaded, setIsLoaded] =
+        useState(false);
 
     useEffect(() => {
+        if (status !== "done") return;
+
+        const savedCards =
+            localStorage.getItem(storageKey);
+
+        setCollection(
+            savedCards
+                ? JSON.parse(savedCards)
+                : []
+        );
+
+        setIsLoaded(true);
+    }, [storageKey, status]);
+
+    useEffect(() => {
+        if (!isLoaded) return;
+
         localStorage.setItem(
-            "pokemonCollection",
+            storageKey,
             JSON.stringify(collection)
         );
-    }, [collection]);
+    }, [
+        collection,
+        storageKey,
+        isLoaded,
+    ]);
 
     function addToCollection(card) {
-        const alreadyExists = collection.some(
-            (savedCard) => savedCard.id === card.id
-        );
+        const alreadyExists =
+            collection.some(
+                (savedCard) =>
+                    savedCard.id === card.id
+            );
 
         if (!alreadyExists) {
-            setCollection((prev) => [...prev, card]);
+            setCollection((prev) => [
+                ...prev,
+                card,
+            ]);
         }
     }
 
     function removeFromCollection(cardId) {
         setCollection((prev) =>
-            prev.filter((card) => card.id !== cardId)
+            prev.filter(
+                (card) => card.id !== cardId
+            )
         );
     }
 

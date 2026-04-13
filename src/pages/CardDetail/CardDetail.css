@@ -65,3 +65,80 @@
     font-weight: 700;
     text-align: center;
 }
+
+.added-message {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+.add-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-hint {
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: rgba(0, 60, 80, 0.25);
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .card-detail-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .card-image-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail-card-image {
+        width: 220px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card-info {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .card-info h1 {
+        font-size: 28px;
+    }
+
+    .card-info p {
+        font-size: 16px;
+    }
+
+    .detail-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .back-button,
+    .save-button {
+        width: 220px;
+    }
+
+    .login-hint,
+    .added-message {
+        max-width: 220px;
+        text-align: center;
+    }
+}

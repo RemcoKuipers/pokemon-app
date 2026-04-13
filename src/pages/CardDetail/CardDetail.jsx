@@ -5,6 +5,8 @@ import "./CardDetail.css";
 import tcgdexApi from "../../services/tcgdexApi";
 import {useCollection} from "../../context/CollectionContext.jsx";
 import {fetchCardPrice} from "../../api/cardPriceApi.js";
+import spinner from "../../components/Spinner/Spinner.jsx";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 function CardDetail() {
     const {id} = useParams();
@@ -16,6 +18,8 @@ function CardDetail() {
     const location = useLocation();
     const {isAuthenticated} = useAuth();
     const [cardPrice, setCardPrice] = useState(0);
+    const [addedMessage, setAddedMessage] = useState(false);
+
     useEffect(() => {
         fetchCard();
     }, [id]);
@@ -43,10 +47,20 @@ function CardDetail() {
         loadPrice();
     }, [card, isAuthenticated]);
 
+    function handleAddCard() {
+        addToCollection(card);
+
+        setAddedMessage(true);
+
+        setTimeout(() => {
+            setAddedMessage(false);
+        }, 2000);
+    }
+
     return (
         <section className="card-detail-page">
             {loading ? (
-                <p>Loading card...</p>
+                <Spinner />
             ) : error ? (
                 <p>{error}</p>
             ) : (
@@ -90,13 +104,28 @@ function CardDetail() {
                             >
                                 Back
                             </button>
+                            {!isAuthenticated && (
+                                <p className="login-hint">
+                                    Log in to add cards to your collection
+                                </p>
+                            )}
 
-                            <button
-                                className="save-button"
-                                onClick={() => addToCollection(card)}
-                            >
-                                Add
-                            </button>
+                            {isAuthenticated && (
+                                <div className="add-button-wrapper">
+                                    <button
+                                        className="save-button"
+                                        onClick={handleAddCard}
+                                    >
+                                        Add to Collection
+                                    </button>
+
+                                    {addedMessage && (
+                                        <p className="added-message">
+                                            Card added to collection
+                                        </p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
