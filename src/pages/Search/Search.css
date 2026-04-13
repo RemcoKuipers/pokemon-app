@@ -81,3 +81,61 @@
     cursor: not-allowed;
     transform: none;
 }
+
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-page {
+        padding: 20px;
+    }
+
+    .search-header {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .search-header input {
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .card-item {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .card-item img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .pagination {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .pagination button {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
