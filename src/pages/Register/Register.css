@@ -52,3 +52,42 @@
 .success {
     color: #b8ffb8;
 }
+
+@media (max-width: 768px) {
+    .auth-page {
+        padding: 20px;
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth-page h1 {
+        font-size: 30px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .auth-form {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .auth-form input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+    }
+
+    .auth-form button {
+        width: 100%;
+    }
+
+    .form-message {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 14px;
+    }
+}

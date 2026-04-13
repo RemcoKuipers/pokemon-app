@@ -38,3 +38,40 @@
     box-shadow: 0 6px 10px rgba(0,0,0,0.25);
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .auth-page {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth-form {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .auth-form input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+    }
+
+    .auth-form button {
+        width: 100%;
+    }
+
+    .form-message {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .auth-page h1 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 24px;
+    }
+}
