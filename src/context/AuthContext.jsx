@@ -102,6 +102,7 @@ export function AuthProvider({children}) {
                 logout,
             }}
         >
+            {/*Pikachu die over het scherm loopt als loading screen */}
             {authState.status === "pending" ? (
                 <p>Loading...</p>
             ) : (
