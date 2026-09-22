@@ -1,10 +1,12 @@
 # Pokémon Card Collection Manager
 
+> Frontend eindproject voor de Full Stack Developer Bootcamp bij NOVI — succesvol afgerond en behaald.
+
 ## Inhoudsopgave
 
 * [Inleiding](#inleiding)
 * [Belangrijkste functionaliteiten](#belangrijkste-functionaliteiten)
-* [Screenshot](#screenshot)
+* [Screenshots](#screenshots)
 * [Gebruikte technieken en frameworks](#gebruikte-technieken-en-frameworks)
 * [Project lokaal opzetten](#project-lokaal-opzetten)
 * [Configuratie](#configuratie)
@@ -34,9 +36,12 @@ Het doel van de applicatie is om verzamelaars een duidelijk overzicht te geven v
 
 ---
 
-## Screenshot
+## Screenshots
 
-![Collection Page Screenshot](./src/assets/screenshot-collection.png)
+<p align="center">
+  <img src="./src/assets/screenshot-homepage.png" width="49%" alt="Pokémon Card Collection Manager homepage">
+  <img src="./src/assets/screenshot-collection.png" width="49%" alt="Pokémon Card Collection Manager collection page">
+</p>
 
 ---
 
@@ -61,32 +66,27 @@ Volg onderstaande stappen om het project lokaal op te zetten.
 
 ### 1. Repository clonen
 
+```bash
 git clone https://github.com/RemcoKuipers/pokemon-app.git
-
----
+```
 
 ### 2. Navigeer naar de projectmap
 
-
+```bash
 cd pokemon-app
-
-
----
+```
 
 ### 3. Dependencies installeren
 
+```bash
 npm install
-
----
+```
 
 ### 4. Project starten
 
+```bash
 npm run dev
-
-
-Hierna draait de applicatie lokaal via:
-
-http://localhost:5173
+```
 
 
 ---
@@ -95,18 +95,13 @@ http://localhost:5173
 
 Deze applicatie gebruikt de NOVI Dynamic API.
 
-Het JSON configuratiebestand voor de NOVI API toegevoegd aan het project.
+Het JSON-configuratiebestand voor de NOVI API is toegevoegd aan het project.
 
 ---
 
 ## Inloggen
 
-Er kan een nieuw account worden aangemaakt via de register pagina.
-
-Indien gewenst kan ingelogd worden met een bestaand testaccount:
-
-Email: test@pokemonapp.nl
-Wachtwoord: 123456
+Via de registratiepagina kan een nieuw account worden aangemaakt. Na het inloggen krijgt de gebruiker toegang tot de persoonlijke collectie en aanvullende functionaliteiten.
 
 ---
 
@@ -114,26 +109,35 @@ Wachtwoord: 123456
 
 ### Project starten
 
+```bash
 npm run dev
+```
 
 Start de development server.
 
----
-
 ### Productie build maken
 
+```bash
 npm run build
+```
 
 Maakt een productieversie van de applicatie.
 
----
-
 ### Preview build
 
+```bash
 npm run preview
+```
 
 Preview van de productie build lokaal.
 
+### Linting
+
+```bash
+npm run lint
+```
+
+Controleert de code op mogelijke fouten en code style issues.
 ---
 
 ### Linting
